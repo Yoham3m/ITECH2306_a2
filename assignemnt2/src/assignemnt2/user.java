@@ -22,9 +22,13 @@ public class user {
 		userInformation.add(tem);
 	}
 	
+	public void deleteQuote() {
+		userInformation.removeAll(userInformation);}
+	
+	
 	@Override
 	public String toString() {
-		return "welcom ";
+		return "Hello " + name;
 	}
 	
 	

@@ -9,6 +9,11 @@ public class MainProgram {
 		MenuSystem menu = new MenuSystem();
 		
 		menu.begin();	
+		
+		
+		
+		
+		
 //
 //		ArrayList<Q_Web> list = new ArrayList<>();
 //		ArrayList<Q_Radio> list1 = new ArrayList<>();

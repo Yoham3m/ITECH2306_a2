@@ -24,14 +24,18 @@ public class MenuSystem {
 		setup();
 		System.out.println("Are you exising user? ");
 		if (scan.next().toUpperCase().charAt(0) == 'Y') {
-			System.out.println("What is your id : ");
+			System.out.println("What is your id :  currently only 1 ");
+			int num = scan.nextInt();
 			for(user tem : userRecords) {
 				System.out.println(tem.toString());
 			}
-			int num = scan.nextInt();
+			
 			user1 = userRecords.get(num-1);
 		}else {
-			user1 = new user("New user");
+			System.out.println("What is your company name?  ");
+			String name = scan.next();
+			user1 = new user(name);
+			System.out.println(user1.toString());
 		}
 		
 		
@@ -67,6 +71,7 @@ public class MenuSystem {
 					displayCurrentBooking();
 					break;
 				case 0:
+					System.out.println("See you .");
 					finished = true;
 					break;
 				default:
@@ -78,11 +83,32 @@ public class MenuSystem {
 	public void displayCurrentBooking()
 	{
 		double total = 0;
+		double money=0;
 		for(int i=0; i<user1.getQuoteList().size(); i++) {
 			total += ((QuoteSystem) user1.getQuoteList().get(i)).getPrice();
 			System.out.println(user1.getQuoteList().get(i));
 		}
-		System.out.println(total);
+		System.out.println("Quote Toal $" + total);
+		System.out.println("Do you want to continue or abandon? Y or N  ");
+		if (scan.next().toUpperCase().charAt(0) == 'Y') {
+			System.out.println("Do you want to pay : Y/N ");
+			if (scan.next().toUpperCase().charAt(0) == 'Y') {
+				System.out.println("How much do you want to pay?");
+
+				money = scan.nextDouble();
+				System.out.println("Paid So Far  $" + money);
+				statusCheck(total,money);
+			}else {
+				System.out.println("Paid So Far  $ 0.00" );
+				statusCheck(total,money);
+			}
+		}else {
+			
+			System.out.println("You delete the quote" );
+			user1.deleteQuote();
+			
+		}
+
 		
 
 	}
@@ -230,6 +256,17 @@ public class MenuSystem {
 		amountPicture = scan.nextInt();
 		Q_Web d= new Q_Web(eachPrice,amountPicture);
 		user1.addQuote(d);
+	}
+	public void statusCheck(double total,double money) {
+		
+		if (money ==0){
+			System.out.println("Status: Quoted but not begun.");
+		}else if (money < total) {
+			System.out.println("Status: Design work done, but no advertising placed yet. ");
+		}else {
+			System.out.println("Status: Closed.");
+		}
+		
 	}
 }
 	

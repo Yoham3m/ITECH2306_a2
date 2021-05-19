@@ -31,7 +31,7 @@ public class Q_television extends QuoteSystem {
 
 	@Override
 	public String toString() {
-		return String.format("1* Televison advertisement : %s  Exposure TV campaign for %d. Total price will be %.2f ",exposureType , weekAccounted,this.getPrice());
+		return String.format("1* Televison advertisement : %s  Exposure TV campaign for %d. Current price will be %.2f ",exposureType , weekAccounted,this.getPrice());
 	}
 	
 	
