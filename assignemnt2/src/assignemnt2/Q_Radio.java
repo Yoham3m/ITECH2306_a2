@@ -33,7 +33,8 @@ public class Q_Radio  extends QuoteSystem{
 
 	@Override
 	public String toString() {
-		return "1 * Radio advertisement:  " + detailInfo + "for " +  videoLength + "seconds:       $" +this.getPrice();
+		return String.format("1* Radio advertisement : %s  with  %d  seconds. Total price will be %.2f ",detailInfo , videoLength,getPrice());
+
 	}   
 
 
